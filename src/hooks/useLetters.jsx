@@ -4,7 +4,7 @@ import { letters } from "../constants/constants";
 export default function useLetters({ lettersRange, lang, isNumbers, isShifted }) {
   const [lettersOrder, setLettersOrder] = useState([]);
   const [lettersStats, setLettersStats] = useState({});
-  function getLetters(data, keys, lettersRange, isNumbers, isShifted) {
+  function getLetters(data, keys, isNumbers, isShifted) {
     let result = [];
     keys.forEach((item) => {
       if (!isNumbers && item === 'numbersLine') return;

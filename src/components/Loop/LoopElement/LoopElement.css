@@ -1,0 +1,22 @@
+.elementContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--height);
+  width: var(--width);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  background-color: white;
+}
+
+.loopElement {
+  height: calc(var(--height) * 0.9);
+  width: calc(var(--width) * 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: turquoise;
+}
+

@@ -9,9 +9,10 @@ function App() {
   const [position, setPosition] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [quantity, setQuantity] = useState(16);
+  const [language, setLanguage] = useState('eng');
   const [ lettersOrder, lettersStats, setLettersStats ] = useLetters({
     lettersRange: 2,
-    lang: 'eng',
+    lang: language,
     isNumbers: true,
     isShifted: false,
   });
@@ -36,7 +37,9 @@ function App() {
       const code = evt.keyCode;
       if (!isEnd && letters.usedKeyCodes.includes(String(code))) {
         setPosition(state => state + 1);
-        const pressedButton = evt.key;
+        const pressedButtonCodeMapping = letters.keyCodesMapping[code];
+        const pressedButtonIsShifted = evt.shiftKey ? 'shifted' : 'native';
+        const pressedButton = letters[language][pressedButtonCodeMapping.line][pressedButtonIsShifted][pressedButtonCodeMapping.position];
         const expectedButton = lettersOrder[position];
         const stats = lettersStats[expectedButton];
         stats.button.push(pressedButton);
@@ -48,7 +51,7 @@ function App() {
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, [getTimeInterval, isEnd, lettersOrder, lettersStats, position, setLettersStats]);
+  }, [getTimeInterval, isEnd, language, lettersOrder, lettersStats, position, setLettersStats]);
   return (
     <div className="App">
       <header className="header">

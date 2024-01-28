@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Letters from './components/Letters/Letters'
 import useLetters from './hooks/useLetters'
 import { letters } from "./constants/constants";
+import Keyboard from './components/Keyboard/Keyboard';
 
 function App() {
   const [headline, setHeadline] = useState('Уровень 1');
@@ -10,6 +11,8 @@ function App() {
   const [isEnd, setIsEnd] = useState(false);
   const [quantity, setQuantity] = useState(16);
   const [language, setLanguage] = useState('eng');
+  const [pressedButton, setPressedButton] = useState('');
+  const [expectedButton, setExpectedButton] = useState('');
   const [ lettersOrder, lettersStats, setLettersStats ] = useLetters({
     lettersRange: 2,
     lang: language,
@@ -36,7 +39,6 @@ function App() {
     function handleKeyPress (evt) {
       const code = evt.keyCode;
       if (!isEnd && letters.usedKeyCodes.includes(String(code))) {
-        setPosition(state => state + 1);
         const pressedButtonCodeMapping = letters.keyCodesMapping[code];
         const pressedButtonIsShifted = evt.shiftKey ? 'shifted' : 'native';
         const pressedButton = letters[language][pressedButtonCodeMapping.line][pressedButtonIsShifted][pressedButtonCodeMapping.position];
@@ -45,6 +47,9 @@ function App() {
         stats.button.push(pressedButton);
         stats.time.push(getTimeInterval());
         setLettersStats(state => ({...state, [expectedButton]: stats}));
+        setPressedButton(String(pressedButton));
+        setExpectedButton(String(expectedButton));
+        setPosition(state => state + 1);
       }
     };
     window.addEventListener("keydown", handleKeyPress);
@@ -58,8 +63,9 @@ function App() {
 
       </header>
       <main className="main">
-        <h1 className="">{headline}</h1>
+        <h1 className="headline">{headline}</h1>
         <Letters lettersOrder={lettersOrder} position={position} quantity={quantity} setIsEnd={setIsEnd}/>
+        <Keyboard language={language} position={position} pressedButton={pressedButton} expectedButton={expectedButton} />
       </main>
       <footer className="footer">
 

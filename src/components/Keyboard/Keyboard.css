@@ -1,7 +1,7 @@
 .keyboard {
   --unit: 50px;
-  width: calc(var(--unit) * 14.5);
-  height:  calc(var(--unit) * 4);
+  width: calc(var(--unit) * 14.7);
+  height:  calc(var(--unit) * 4.2);
   margin: 20px auto 0;
   background-color: rgb(177, 188, 144);
   border: 5px solid rgb(148, 148, 172);

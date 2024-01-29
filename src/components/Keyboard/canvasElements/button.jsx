@@ -29,7 +29,7 @@ export default class Button {
     this.gap = gap;
   }
   drawLowerLayer(ctx) {
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 6;
     ctx.strokeStyle = this.outlineColor;
     ctx.strokeRect(
       this.x + this.gap - 1,

@@ -6,8 +6,9 @@ import { letters } from "./constants/constants";
 import Keyboard from './components/Keyboard/Keyboard';
 
 function App() {
-  const [headline, setHeadline] = useState('Уровень 1');
+  const [headline, setHeadline] = useState('Тренажёр печати вслепую');
   const [position, setPosition] = useState(0);
+  const [count, setCount] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [quantity, setQuantity] = useState(16);
   const [language, setLanguage] = useState('eng');
@@ -49,7 +50,9 @@ function App() {
         setLettersStats(state => ({...state, [expectedButton]: stats}));
         setPressedButton(String(pressedButton));
         setExpectedButton(String(expectedButton));
-        setPosition(state => state + 1);
+        if (pressedButton === expectedButton)setPosition(state => state + 1);
+        setCount(state => state + 1);
+
       }
     };
     window.addEventListener("keydown", handleKeyPress);
@@ -65,7 +68,7 @@ function App() {
       <main className="main">
         <h1 className="headline">{headline}</h1>
         <Letters lettersOrder={lettersOrder} position={position} quantity={quantity} setIsEnd={setIsEnd}/>
-        <Keyboard language={language} position={position} pressedButton={pressedButton} expectedButton={expectedButton} />
+        <Keyboard language={language} count={count} pressedButton={pressedButton} expectedButton={expectedButton} />
       </main>
       <footer className="footer">
 

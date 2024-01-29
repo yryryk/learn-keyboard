@@ -50,7 +50,9 @@ function App() {
         setLettersStats(state => ({...state, [expectedButton]: stats}));
         setPressedButton(String(pressedButton));
         setExpectedButton(String(expectedButton));
-        if (pressedButton === expectedButton)setPosition(state => state + 1);
+        if (pressedButton === expectedButton) {
+          setPosition(state => state + 1);
+        }
         setCount(state => state + 1);
 
       }

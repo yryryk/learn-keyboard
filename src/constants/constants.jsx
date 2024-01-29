@@ -1,5 +1,26 @@
 const letters = {
-  ru: {},
+  ru: {
+    numbersLine: {
+      positionCoefficient: 0,
+      native: ["ё", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
+      shifted: ["Ё", "!", '"', "№", ";", "%", ":", "?", "*", "(", ")", "_", "+"],
+    },
+    firstLettersLine: {
+      positionCoefficient: 1,
+      native: ["й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", "\\"],
+      shifted: ["Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ", "/"],
+    },
+    secondLettersLine: {
+      positionCoefficient: 2,
+      native: ["ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э"],
+      shifted: ["Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", 'Э'],
+    },
+    thirdLettersLine: {
+      positionCoefficient: 3,
+      native: ["я", "ч", "с", "м", "и", "т", "ь", "б", "ю", "."],
+      shifted: ["Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ","],
+    },
+  },
   eng: {
     numbersLine: {
       positionCoefficient: 0,

@@ -11,7 +11,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [quantity, setQuantity] = useState(16);
-  const [language, setLanguage] = useState('eng');
+  const [language, setLanguage] = useState('ru');
   const [pressedButton, setPressedButton] = useState('');
   const [expectedButton, setExpectedButton] = useState('');
   const [ lettersOrder, lettersStats, setLettersStats ] = useLetters({
@@ -38,6 +38,7 @@ function App() {
 
   useEffect(() => {
     function handleKeyPress (evt) {
+      evt.preventDefault();
       const code = evt.keyCode;
       if (!isEnd && letters.usedKeyCodes.includes(String(code))) {
         const pressedButtonCodeMapping = letters.keyCodesMapping[code];

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { letters } from "../constants/constants";
 
-export default function useLetters({ lettersRange, lang, isNumbers, isShifted }) {
+export default function useLetters({letters, lettersRange, lang, isNumbers, isShifted }) {
   const [lettersOrder, setLettersOrder] = useState([]);
   const [lettersStats, setLettersStats] = useState({});
+
   function getLetters(data, keys, isNumbers, isShifted) {
     let result = [];
     keys.forEach((item) => {
@@ -13,18 +13,21 @@ export default function useLetters({ lettersRange, lang, isNumbers, isShifted })
     });
     return result;
   };
+
   useEffect (() => {
     const data = letters[lang];
     const keys = Object.keys(data);
     const usedLetters = getLetters(data, keys, isNumbers, isShifted);
+
     const objLettersStats = {};
     usedLetters.forEach((item) => {
-      objLettersStats[item] = {
+      objLettersStats[item.value] = {
         time: [],
         button: [],
       }
     });
     setLettersStats(objLettersStats);
+
     let lettersBand = [];
     for (let i = 0; i < lettersRange; i++) {
       lettersBand = lettersBand.concat(usedLetters);
@@ -35,7 +38,7 @@ export default function useLetters({ lettersRange, lang, isNumbers, isShifted })
       randomLettersOrder.push(lettersBand.splice(index, 1)[0]);
     }
     setLettersOrder(randomLettersOrder);
-  }, [isNumbers, isShifted, lang, lettersRange]);
+  }, [isNumbers, isShifted, lang, letters, lettersRange]);
 
   return [ lettersOrder, lettersStats, setLettersStats ];
 }

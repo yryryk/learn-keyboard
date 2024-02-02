@@ -11,10 +11,11 @@ function App() {
   const [count, setCount] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [quantity, setQuantity] = useState(16);
-  const [language, setLanguage] = useState('ru');
+  const [language, setLanguage] = useState('eng');
   const [pressedButton, setPressedButton] = useState('');
   const [expectedButton, setExpectedButton] = useState('');
   const [ lettersOrder, lettersStats, setLettersStats ] = useLetters({
+    letters: letters,
     lettersRange: 2,
     lang: language,
     isNumbers: true,
@@ -41,17 +42,18 @@ function App() {
       evt.preventDefault();
       const code = evt.keyCode;
       if (!isEnd && letters.usedKeyCodes.includes(String(code))) {
-        const pressedButtonCodeMapping = letters.keyCodesMapping[code];
+        const pressedButtonCodeMapping = letters.keyCodesToLettersMapping[code];
         const pressedButtonIsShifted = evt.shiftKey ? 'shifted' : 'native';
-        const pressedButton = letters[language][pressedButtonCodeMapping.line][pressedButtonIsShifted][pressedButtonCodeMapping.position];
+        const pressedButtonValue = letters[language][pressedButtonCodeMapping.line][pressedButtonIsShifted][pressedButtonCodeMapping.position].value;
+        const pressedButton = {value: pressedButtonValue, shifted: evt.shiftKey, key: code};
         const expectedButton = lettersOrder[position];
-        const stats = lettersStats[expectedButton];
-        stats.button.push(pressedButton);
+        const stats = lettersStats[expectedButton.value];
+        stats.button.push(pressedButton.value);
         stats.time.push(getTimeInterval());
-        setLettersStats(state => ({...state, [expectedButton]: stats}));
-        setPressedButton(String(pressedButton));
-        setExpectedButton(String(expectedButton));
-        if (pressedButton === expectedButton) {
+        setLettersStats(state => ({...state, [expectedButton.value]: stats}));
+        setPressedButton(pressedButton);
+        setExpectedButton(expectedButton);
+        if (pressedButton.value === expectedButton.value) {
           setPosition(state => state + 1);
         }
         setCount(state => state + 1);

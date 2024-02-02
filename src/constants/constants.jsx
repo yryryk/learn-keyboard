@@ -1,49 +1,1006 @@
 const letters = {
-  ru: {
-    numbersLine: {
-      positionCoefficient: 0,
-      native: ["ё", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
-      shifted: ["Ё", "!", '"', "№", ";", "%", ":", "?", "*", "(", ")", "_", "+"],
-    },
-    firstLettersLine: {
-      positionCoefficient: 1,
-      native: ["й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х", "ъ", "\\"],
-      shifted: ["Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ", "/"],
-    },
-    secondLettersLine: {
-      positionCoefficient: 2,
-      native: ["ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э"],
-      shifted: ["Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", 'Э'],
-    },
-    thirdLettersLine: {
-      positionCoefficient: 3,
-      native: ["я", "ч", "с", "м", "и", "т", "ь", "б", "ю", "."],
-      shifted: ["Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ","],
-    },
-  },
   eng: {
     numbersLine: {
       positionCoefficient: 0,
-      native: ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "="],
-      shifted: ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"],
+      native: [
+        {
+          value: "`",
+          key: "223",
+          shifted: false,
+        },
+        {
+          value: "1",
+          key: "49",
+          shifted: false,
+        },
+        {
+          value: "2",
+          key: "50",
+          shifted: false,
+        },
+        {
+          value: "3",
+          key: "51",
+          shifted: false,
+        },
+        {
+          value: "4",
+          key: "52",
+          shifted: false,
+        },
+        {
+          value: "5",
+          key: "53",
+          shifted: false,
+        },
+        {
+          value: "6",
+          key: "54",
+          shifted: false,
+        },
+        {
+          value: "7",
+          key: "55",
+          shifted: false,
+        },
+        {
+          value: "8",
+          key: "56",
+          shifted: false,
+        },
+        {
+          value: "9",
+          key: "57",
+          shifted: false,
+        },
+        {
+          value: "0",
+          key: "48",
+          shifted: false,
+        },
+        {
+          value: "-",
+          key: "189",
+          shifted: false,
+        },
+        {
+          value: "=",
+          key: "187",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "~",
+          key: "223",
+          shifted: true,
+        },
+        {
+          value: "!",
+          key: "49",
+          shifted: true,
+        },
+        {
+          value: "@",
+          key: "50",
+          shifted: true,
+        },
+        {
+          value: "#",
+          key: "51",
+          shifted: true,
+        },
+        {
+          value: "$",
+          key: "52",
+          shifted: true,
+        },
+        {
+          value: "%",
+          key: "53",
+          shifted: true,
+        },
+        {
+          value: "^",
+          key: "54",
+          shifted: true,
+        },
+        {
+          value: "&",
+          key: "55",
+          shifted: true,
+        },
+        {
+          value: "*",
+          key: "56",
+          shifted: true,
+        },
+        {
+          value: "(",
+          key: "57",
+          shifted: true,
+        },
+        {
+          value: ")",
+          key: "48",
+          shifted: true,
+        },
+        {
+          value: "_",
+          key: "189",
+          shifted: true,
+        },
+        {
+          value: "+",
+          key: "187",
+          shifted: true,
+        },
+      ],
     },
     firstLettersLine: {
       positionCoefficient: 1,
-      native: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\"],
-      shifted: ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}", "|"],
+      native: [
+        {
+          value: "q",
+          key: "81",
+          shifted: false,
+        },
+        {
+          value: "w",
+          key: "87",
+          shifted: false,
+        },
+        {
+          value: "e",
+          key: "69",
+          shifted: false,
+        },
+        {
+          value: "r",
+          key: "82",
+          shifted: false,
+        },
+        {
+          value: "t",
+          key: "84",
+          shifted: false,
+        },
+        {
+          value: "y",
+          key: "89",
+          shifted: false,
+        },
+        {
+          value: "u",
+          key: "85",
+          shifted: false,
+        },
+        {
+          value: "i",
+          key: "73",
+          shifted: false,
+        },
+        {
+          value: "o",
+          key: "79",
+          shifted: false,
+        },
+        {
+          value: "p",
+          key: "80",
+          shifted: false,
+        },
+        {
+          value: "[",
+          key: "219",
+          shifted: false,
+        },
+        {
+          value: "]",
+          key: "221",
+          shifted: false,
+        },
+        {
+          value: "\\",
+          key: "222",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "Q",
+          key: "81",
+          shifted: true,
+        },
+        {
+          value: "W",
+          key: "87",
+          shifted: true,
+        },
+        {
+          value: "E",
+          key: "69",
+          shifted: true,
+        },
+        {
+          value: "R",
+          key: "82",
+          shifted: true,
+        },
+        {
+          value: "T",
+          key: "84",
+          shifted: true,
+        },
+        {
+          value: "Y",
+          key: "89",
+          shifted: true,
+        },
+        {
+          value: "U",
+          key: "85",
+          shifted: true,
+        },
+        {
+          value: "I",
+          key: "73",
+          shifted: true,
+        },
+        {
+          value: "O",
+          key: "79",
+          shifted: true,
+        },
+        {
+          value: "P",
+          key: "80",
+          shifted: true,
+        },
+        {
+          value: "{",
+          key: "219",
+          shifted: true,
+        },
+        {
+          value: "}",
+          key: "221",
+          shifted: true,
+        },
+        {
+          value: "|",
+          key: "222",
+          shifted: true,
+        },
+      ],
     },
     secondLettersLine: {
       positionCoefficient: 2,
-      native: ["a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'"],
-      shifted: ["A", "S", "D", "F", "G", "H", "J", "K", "L", ":", '"'],
+      native: [
+        {
+          value: "a",
+          key: "65",
+          shifted: false,
+        },
+        {
+          value: "s",
+          key: "83",
+          shifted: false,
+        },
+        {
+          value: "d",
+          key: "68",
+          shifted: false,
+        },
+        {
+          value: "f",
+          key: "70",
+          shifted: false,
+        },
+        {
+          value: "g",
+          key: "71",
+          shifted: false,
+        },
+        {
+          value: "h",
+          key: "72",
+          shifted: false,
+        },
+        {
+          value: "j",
+          key: "74",
+          shifted: false,
+        },
+        {
+          value: "k",
+          key: "75",
+          shifted: false,
+        },
+        {
+          value: "l",
+          key: "76",
+          shifted: false,
+        },
+        {
+          value: ";",
+          key: "186",
+          shifted: false,
+        },
+        {
+          value: "'",
+          key: "192",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "A",
+          key: "65",
+          shifted: true,
+        },
+        {
+          value: "S",
+          key: "83",
+          shifted: true,
+        },
+        {
+          value: "D",
+          key: "68",
+          shifted: true,
+        },
+        {
+          value: "F",
+          key: "70",
+          shifted: true,
+        },
+        {
+          value: "G",
+          key: "71",
+          shifted: true,
+        },
+        {
+          value: "H",
+          key: "72",
+          shifted: true,
+        },
+        {
+          value: "J",
+          key: "74",
+          shifted: true,
+        },
+        {
+          value: "K",
+          key: "75",
+          shifted: true,
+        },
+        {
+          value: "L",
+          key: "76",
+          shifted: true,
+        },
+        {
+          value: ":",
+          key: "186",
+          shifted: true,
+        },
+        {
+          value: '"',
+          key: "192",
+          shifted: true,
+        },
+      ],
     },
     thirdLettersLine: {
       positionCoefficient: 3,
-      native: ["z", "x", "c", "v", "b", "n", "m", ",", ".", "/"],
-      shifted: ["Z", "X", "C", "V", "B", "N", "M", "<", ">", "?"],
+      native: [
+        {
+          value: "z",
+          key: "90",
+          shifted: false,
+        },
+        {
+          value: "x",
+          key: "88",
+          shifted: false,
+        },
+        {
+          value: "c",
+          key: "67",
+          shifted: false,
+        },
+        {
+          value: "v",
+          key: "86",
+          shifted: false,
+        },
+        {
+          value: "b",
+          key: "66",
+          shifted: false,
+        },
+        {
+          value: "n",
+          key: "78",
+          shifted: false,
+        },
+        {
+          value: "m",
+          key: "77",
+          shifted: false,
+        },
+        {
+          value: ",",
+          key: "188",
+          shifted: false,
+        },
+        {
+          value: ".",
+          key: "190",
+          shifted: false,
+        },
+        {
+          value: "/",
+          key: "191",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "Z",
+          key: "90",
+          shifted: true,
+        },
+        {
+          value: "X",
+          key: "88",
+          shifted: true,
+        },
+        {
+          value: "C",
+          key: "67",
+          shifted: true,
+        },
+        {
+          value: "V",
+          key: "86",
+          shifted: true,
+        },
+        {
+          value: "B",
+          key: "66",
+          shifted: true,
+        },
+        {
+          value: "N",
+          key: "78",
+          shifted: true,
+        },
+        {
+          value: "M",
+          key: "77",
+          shifted: true,
+        },
+        {
+          value: "<",
+          key: "188",
+          shifted: true,
+        },
+        {
+          value: ">",
+          key: "190",
+          shifted: true,
+        },
+        {
+          value: "?",
+          key: "191",
+          shifted: true,
+        },
+      ],
     },
   },
-  keyCodesMapping: {
+  ru: {
+    numbersLine: {
+      positionCoefficient: 0,
+      native: [
+        {
+          value: "ё",
+          key: "223",
+          shifted: false,
+        },
+        {
+          value: "1",
+          key: "49",
+          shifted: false,
+        },
+        {
+          value: "2",
+          key: "50",
+          shifted: false,
+        },
+        {
+          value: "3",
+          key: "51",
+          shifted: false,
+        },
+        {
+          value: "4",
+          key: "52",
+          shifted: false,
+        },
+        {
+          value: "5",
+          key: "53",
+          shifted: false,
+        },
+        {
+          value: "6",
+          key: "54",
+          shifted: false,
+        },
+        {
+          value: "7",
+          key: "55",
+          shifted: false,
+        },
+        {
+          value: "8",
+          key: "56",
+          shifted: false,
+        },
+        {
+          value: "9",
+          key: "57",
+          shifted: false,
+        },
+        {
+          value: "0",
+          key: "48",
+          shifted: false,
+        },
+        {
+          value: "-",
+          key: "189",
+          shifted: false,
+        },
+        {
+          value: "=",
+          key: "187",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "Ё",
+          key: "223",
+          shifted: true,
+        },
+        {
+          value: "!",
+          key: "49",
+          shifted: true,
+        },
+        {
+          value: '"',
+          key: "50",
+          shifted: true,
+        },
+        {
+          value: "№",
+          key: "51",
+          shifted: true,
+        },
+        {
+          value: ";",
+          key: "52",
+          shifted: true,
+        },
+        {
+          value: "%",
+          key: "53",
+          shifted: true,
+        },
+        {
+          value: ":",
+          key: "54",
+          shifted: true,
+        },
+        {
+          value: "?",
+          key: "55",
+          shifted: true,
+        },
+        {
+          value: "*",
+          key: "56",
+          shifted: true,
+        },
+        {
+          value: "(",
+          key: "57",
+          shifted: true,
+        },
+        {
+          value: ")",
+          key: "48",
+          shifted: true,
+        },
+        {
+          value: "_",
+          key: "189",
+          shifted: true,
+        },
+        {
+          value: "+",
+          key: "187",
+          shifted: true,
+        },
+      ],
+    },
+    firstLettersLine: {
+      positionCoefficient: 1,
+      native: [
+        {
+          value: "й",
+          key: "81",
+          shifted: false,
+        },
+        {
+          value: "ц",
+          key: "87",
+          shifted: false,
+        },
+        {
+          value: "у",
+          key: "69",
+          shifted: false,
+        },
+        {
+          value: "к",
+          key: "82",
+          shifted: false,
+        },
+        {
+          value: "е",
+          key: "84",
+          shifted: false,
+        },
+        {
+          value: "н",
+          key: "89",
+          shifted: false,
+        },
+        {
+          value: "г",
+          key: "85",
+          shifted: false,
+        },
+        {
+          value: "ш",
+          key: "73",
+          shifted: false,
+        },
+        {
+          value: "щ",
+          key: "79",
+          shifted: false,
+        },
+        {
+          value: "з",
+          key: "80",
+          shifted: false,
+        },
+        {
+          value: "х",
+          key: "219",
+          shifted: false,
+        },
+        {
+          value: "ъ",
+          key: "221",
+          shifted: false,
+        },
+        {
+          value: "\\",
+          key: "222",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "Й",
+          key: "81",
+          shifted: true,
+        },
+        {
+          value: "Ц",
+          key: "87",
+          shifted: true,
+        },
+        {
+          value: "У",
+          key: "69",
+          shifted: true,
+        },
+        {
+          value: "К",
+          key: "82",
+          shifted: true,
+        },
+        {
+          value: "Е",
+          key: "84",
+          shifted: true,
+        },
+        {
+          value: "Н",
+          key: "89",
+          shifted: true,
+        },
+        {
+          value: "Г",
+          key: "85",
+          shifted: true,
+        },
+        {
+          value: "Ш",
+          key: "73",
+          shifted: true,
+        },
+        {
+          value: "Щ",
+          key: "79",
+          shifted: true,
+        },
+        {
+          value: "З",
+          key: "80",
+          shifted: true,
+        },
+        {
+          value: "Х",
+          key: "219",
+          shifted: true,
+        },
+        {
+          value: "Ъ",
+          key: "221",
+          shifted: true,
+        },
+        {
+          value: "/",
+          key: "222",
+          shifted: true,
+        },
+      ],
+    },
+    secondLettersLine: {
+      positionCoefficient: 2,
+      native: [
+        {
+          value: "ф",
+          key: "65",
+          shifted: false,
+        },
+        {
+          value: "ы",
+          key: "83",
+          shifted: false,
+        },
+        {
+          value: "в",
+          key: "68",
+          shifted: false,
+        },
+        {
+          value: "а",
+          key: "70",
+          shifted: false,
+        },
+        {
+          value: "п",
+          key: "71",
+          shifted: false,
+        },
+        {
+          value: "р",
+          key: "72",
+          shifted: false,
+        },
+        {
+          value: "о",
+          key: "74",
+          shifted: false,
+        },
+        {
+          value: "л",
+          key: "75",
+          shifted: false,
+        },
+        {
+          value: "д",
+          key: "76",
+          shifted: false,
+        },
+        {
+          value: "ж",
+          key: "186",
+          shifted: false,
+        },
+        {
+          value: "э",
+          key: "192",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "Ф",
+          key: "65",
+          shifted: true,
+        },
+        {
+          value: "Ы",
+          key: "83",
+          shifted: true,
+        },
+        {
+          value: "В",
+          key: "68",
+          shifted: true,
+        },
+        {
+          value: "А",
+          key: "70",
+          shifted: true,
+        },
+        {
+          value: "П",
+          key: "71",
+          shifted: true,
+        },
+        {
+          value: "Р",
+          key: "72",
+          shifted: true,
+        },
+        {
+          value: "О",
+          key: "74",
+          shifted: true,
+        },
+        {
+          value: "Л",
+          key: "75",
+          shifted: true,
+        },
+        {
+          value: "Д",
+          key: "76",
+          shifted: true,
+        },
+        {
+          value: "Ж",
+          key: "186",
+          shifted: true,
+        },
+        {
+          value: "Э",
+          key: "192",
+          shifted: true,
+        },
+      ],
+    },
+    thirdLettersLine: {
+      positionCoefficient: 3,
+      native: [
+        {
+          value: "я",
+          key: "90",
+          shifted: false,
+        },
+        {
+          value: "ч",
+          key: "88",
+          shifted: false,
+        },
+        {
+          value: "с",
+          key: "67",
+          shifted: false,
+        },
+        {
+          value: "м",
+          key: "86",
+          shifted: false,
+        },
+        {
+          value: "и",
+          key: "66",
+          shifted: false,
+        },
+        {
+          value: "т",
+          key: "78",
+          shifted: false,
+        },
+        {
+          value: "ь",
+          key: "77",
+          shifted: false,
+        },
+        {
+          value: "б",
+          key: "188",
+          shifted: false,
+        },
+        {
+          value: "ю",
+          key: "190",
+          shifted: false,
+        },
+        {
+          value: ".",
+          key: "191",
+          shifted: false,
+        },
+      ],
+      shifted: [
+        {
+          value: "Я",
+          key: "90",
+          shifted: true,
+        },
+        {
+          value: "Ч",
+          key: "88",
+          shifted: true,
+        },
+        {
+          value: "С",
+          key: "67",
+          shifted: true,
+        },
+        {
+          value: "М",
+          key: "86",
+          shifted: true,
+        },
+        {
+          value: "И",
+          key: "66",
+          shifted: true,
+        },
+        {
+          value: "Т",
+          key: "78",
+          shifted: true,
+        },
+        {
+          value: "Ь",
+          key: "77",
+          shifted: true,
+        },
+        {
+          value: "Б",
+          key: "188",
+          shifted: true,
+        },
+        {
+          value: "Ю",
+          key: "190",
+          shifted: true,
+        },
+        {
+          value: ",",
+          key: "191",
+          shifted: true,
+        },
+      ],
+    },
+  },
+
+  keyCodesToLettersMapping: {
     48: { line: "numbersLine", position: 10 },
     49: { line: "numbersLine", position: 1 },
     50: { line: "numbersLine", position: 2 },
@@ -92,7 +1049,6 @@ const letters = {
     222: { line: "firstLettersLine", position: 12 },
     223: { line: "numbersLine", position: 0 },
   },
-  lettersMapping : {},
   usedKeyCodes: [
     "48",
     "49",

@@ -9,14 +9,14 @@ function Letters({lettersOrder, position, quantity, setIsEnd}) {
     } else {
       const resultArr = [];
       const halfLength = Math.floor(quantity/2);
-      const supplementedLettersOrder = ['', '', '', ...lettersOrder, 'end']
+      const supplementedLettersOrder = [{value: ''}, {value: ''}, {value: ''}, ...lettersOrder, {value: 'end'}]
 
       for (let i = 0; i < halfLength; i++) {
         const lettersOrderPosition = i + position;
         if (supplementedLettersOrder.length > lettersOrderPosition) {
           resultArr.push(
             {
-              content: supplementedLettersOrder[lettersOrderPosition],
+              content: supplementedLettersOrder[lettersOrderPosition].value,
               id: (i + position) % quantity,
             }
           );

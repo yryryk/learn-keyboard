@@ -1,7 +1,7 @@
 .loopWrapper {
   --angle: 0deg;
-  --height: 100px;
-  --width: 100px;
+  --height: calc(var(--unit) * 1.2);
+  --width: calc(var(--unit) * 1.2);
   --loopWrapperWidth: var(--width);
   --loopContainerPerspective: var(--width);
   margin: auto;

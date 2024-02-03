@@ -7,6 +7,7 @@ import Keyboard from './components/Keyboard/Keyboard';
 
 function App() {
   const [headline, setHeadline] = useState('Тренажёр печати вслепую');
+  const [unit, setUnit] = useState(window.innerWidth/24);
   const [position, setPosition] = useState(0);
   const [count, setCount] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
@@ -65,15 +66,24 @@ function App() {
       window.removeEventListener("keydown", handleKeyPress);
     };
   }, [getTimeInterval, isEnd, language, lettersOrder, lettersStats, position, setLettersStats]);
+  useEffect(() => {
+    function handleResize() {
+      setUnit(window.innerWidth/24);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
-    <div className="App">
+    <div className="App" style={{ "--unit": unit + "px" }}>
       <header className="header">
 
       </header>
       <main className="main">
         <h1 className="headline">{headline}</h1>
         <Letters lettersOrder={lettersOrder} position={position} quantity={quantity} setIsEnd={setIsEnd}/>
-        <Keyboard language={language} count={count} pressedButton={pressedButton} expectedButton={expectedButton} />
+        <Keyboard language={language} count={count} pressedButton={pressedButton} expectedButton={expectedButton} unit={unit} />
       </main>
       <footer className="footer">
 

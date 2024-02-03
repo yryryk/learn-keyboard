@@ -5,8 +5,7 @@ import Button from "./canvasElements/button";
 import Arrow from "./canvasElements/arrow";
 import { letters } from "../../constants/constants";
 
-function Keyboard({ language, count, pressedButton, expectedButton }) {
-  const [unit, setUnit] = useState(75);
+function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
   const [buttons, setButtons] = useState({});
   const [ctx, setCtx] = useState(null);
   const [defaultOutlineColor, setDefaultOutlineColor] =
@@ -54,7 +53,7 @@ function Keyboard({ language, count, pressedButton, expectedButton }) {
         background: "black",
         color: "white",
         outlineColor: defaultOutlineColor,
-        gap: 6,
+        gap: Math.fround(unit / 10),
       });
     }
     setButtons(buttons);
@@ -66,7 +65,8 @@ function Keyboard({ language, count, pressedButton, expectedButton }) {
         yEnd: 90,
         isArrowVisible: false,
         background: "yellow",
-        lineThickness: 12,
+        lineThickness: Math.floor(unit / 6),
+        endGap:  Math.floor(unit / 4),
       })
     );
   }, [defaultOutlineColor, language, unit]);

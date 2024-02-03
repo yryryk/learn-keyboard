@@ -1,5 +1,4 @@
 .keyboard {
-  --unit: 50px;
   width: calc(var(--unit) * 14.7);
   height:  calc(var(--unit) * 4.2);
   margin: 20px auto 0;

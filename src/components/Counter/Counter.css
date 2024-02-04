@@ -1,0 +1,77 @@
+.counterWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: transparent;
+  width: 75%;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.counterButton {
+  position: relative;
+  align-self: flex-end;
+  background-color: transparent;
+  z-index: 2;
+  padding: 0;
+  color: rgb(150, 200, 200);
+  filter: drop-shadow(0 0 15px rgb(148, 148, 172));
+}
+
+.counterButton:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 15px #8ee177);
+}
+
+.counterButton:active {
+  filter: drop-shadow(0 0 15px rgb(82, 212, 212));
+}
+
+.counterButtonTop {
+  border-top: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 36px solid #282c34;
+}
+
+.counterButtonBottom {
+  border-bottom: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 36px solid #282c34;
+}
+
+.counterContainer {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(148, 148, 172);
+  border-radius: 12px;
+  box-shadow: 0 0 60px 5px rgb(148, 148, 172);
+  background-color: #282c34;
+  gap: 2px;
+  justify-content: space-between;
+  color: rgb(150, 200, 200);
+  width: 100%;
+  padding: 12px;
+}
+
+.counterParagraph {
+  padding-right: 14px;
+  margin: 0;
+}
+
+.counterButtonParagraph {
+  margin: 0;
+  position: absolute;
+  left: -3px;
+}
+
+.counterButtonTop .counterButtonParagraph {
+  top: 16px;
+}
+
+.counterButtonBottom .counterButtonParagraph {
+  bottom: 16px;
+}

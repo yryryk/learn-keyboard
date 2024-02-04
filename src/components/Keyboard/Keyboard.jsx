@@ -65,8 +65,8 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
         yEnd: 90,
         isArrowVisible: false,
         background: "yellow",
-        lineThickness: Math.floor(unit / 6),
-        endGap:  Math.floor(unit / 4),
+        arrowThickness: Math.floor(unit / 5),
+        endGap: Math.floor(unit / 4),
       })
     );
   }, [defaultOutlineColor, language, unit]);
@@ -84,11 +84,12 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
     }
     const pressedButtonKey = pressedButton.key;
     const expectedButtonKey = expectedButton.key;
+    Object.values(buttons).forEach((item) => {
+      item.outlineColor = defaultOutlineColor;
+      item.isLetterVisible = false;
+    });
+    arrow.isArrowVisible = false;
     if (count) {
-      Object.values(buttons).forEach((item) => {
-        item.outlineColor = defaultOutlineColor;
-        item.isLetterVisible = false;
-      });
       buttons[pressedButtonKey].outlineColor = "#e1771a";
       buttons[pressedButtonKey].isLetterVisible = true;
       buttons[expectedButtonKey].outlineColor = "#8ee177";

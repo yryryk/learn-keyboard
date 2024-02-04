@@ -1,5 +1,6 @@
 .App {
   --unit: 50px;
+  position: relative;
   font-size: calc( var(--unit) / 4 );
   text-align: center;
   background-color: #282c34;
@@ -15,3 +16,4 @@
   color: rgb(150, 200, 200);
   margin-bottom: 50px;
 }
+

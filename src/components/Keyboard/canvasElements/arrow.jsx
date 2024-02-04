@@ -6,7 +6,7 @@ export default class Arrow {
     yEnd,
     isArrowVisible,
     background,
-    lineThickness,
+    arrowThickness,
     endGap,
   }) {
     this.xStart = xStart;
@@ -15,7 +15,7 @@ export default class Arrow {
     this.yEnd = yEnd;
     this.isArrowVisible = isArrowVisible;
     this.background = background;
-    this.lineThickness = lineThickness;
+    this.arrowThickness = arrowThickness;
     this.endGap = endGap;
   }
   draw(ctx) {
@@ -23,8 +23,8 @@ export default class Arrow {
       this.xLength = (this.xEnd - this.xStart);
       this.yLength = (this.yEnd - this.yStart);
       this.length = Math.sqrt(this.xLength ** 2 + this.yLength ** 2);
-      this.xLength1 = Math.round(this.yLength * this.lineThickness / this.length);
-      this.yLength1 = Math.round(this.xLength * this.lineThickness / this.length);
+      this.xLength1 = Math.round(this.yLength * this.arrowThickness / this.length);
+      this.yLength1 = Math.round(this.xLength * this.arrowThickness / this.length);
       this.xLength2 = Math.round(this.xLength * this.endGap / this.length);
       this.yLength2 = Math.round(this.yLength * this.endGap / this.length);
       ctx.fillStyle = this.background;

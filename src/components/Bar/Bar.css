@@ -1,0 +1,49 @@
+.bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(145deg, #1e2127, #323741);
+  box-shadow: 25px 0 60px #393f4a, inset -25px 0 50px #17191e,
+    inset 25px 0 50px #17191e;
+  font-size: calc(var(--unit) / 5);
+}
+
+.barContainer {
+  padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.barHeadline {
+  color: rgb(150, 200, 200);
+  margin: 24px 0;
+  font-size: calc(var(--unit) / 4);
+}
+
+.refreshAllButton {
+  margin: 0 auto 50px;
+  background-color: #282c34;
+  border: 1px solid rgb(148, 148, 172);
+  border-radius: 12px;
+  box-shadow: 0 0 60px 5px rgb(148, 148, 172);
+  padding: 12px;
+  color: rgb(150, 200, 200);
+  width: 75%;
+  transition: all 0.5s ease;
+}
+
+.refreshAllButton:hover {
+  cursor: pointer;
+  box-shadow: 0 0 60px 5px #8ee177;
+}
+
+.refreshAllButton:active {
+  background-color: rgb(148, 148, 172);
+}

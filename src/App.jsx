@@ -7,12 +7,11 @@ import Keyboard from "./components/Keyboard/Keyboard";
 import Bar from "./components/Bar/Bar";
 
 function App() {
-  const [headline, setHeadline] = useState("Тренажёр печати вслепую");
   const [unit, setUnit] = useState(window.innerWidth / 24);
   const [position, setPosition] = useState(0);
   const [count, setCount] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
-  const [quantity, setQuantity] = useState(16);
+  const [quantity, setQuantity] = useState(20);
   const [language, setLanguage] = useState("eng");
   const [pressedButton, setPressedButton] = useState("");
   const [expectedButton, setExpectedButton] = useState("");
@@ -110,7 +109,7 @@ function App() {
     <div className="App" style={{ "--unit": unit + "px" }}>
       <header className="header"></header>
       <main className="main">
-        <h1 className="headline">{headline}</h1>
+        <h1 className="headline">Тренажёр печати вслепую</h1>
         <Letters
           lettersOrder={lettersOrder}
           position={position}
@@ -135,6 +134,8 @@ function App() {
         setLanguage={setLanguage}
         lettersRange={lettersRange}
         setLettersRange={setLettersRange}
+        quantity={quantity}
+        setQuantity={setQuantity}
         refreshAll={refreshAll}
       />
     </div>

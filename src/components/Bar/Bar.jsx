@@ -12,6 +12,8 @@ function Bar({
   setLanguage,
   lettersRange,
   setLettersRange,
+  quantity,
+  setQuantity,
 }) {
   function handleLanguageSwitch() {
     setLanguage((state) => (state === "eng" ? "ru" : "eng"));
@@ -41,6 +43,18 @@ function Bar({
       refreshAll();
     }
   }
+
+  function handlePlusQuantity() {
+    if (quantity < 35) {
+      setQuantity((state) => state + 5);
+    }
+  }
+
+  function handleMinusQuantity() {
+    if (quantity > 10) {
+      setQuantity((state) => state - 5);
+    }
+  }
   return (
     <div className="bar">
       <div className="barContainer">
@@ -68,6 +82,12 @@ function Bar({
           value={lettersRange}
           handlePlus={handlePlusLettersRange}
           handleMinus={handleMinusLettersRange}
+        />
+        <Counter
+          label={"Размер"}
+          value={(quantity/5 - 1) + 1}
+          handlePlus={handlePlusQuantity}
+          handleMinus={handleMinusQuantity}
         />
       </div>
       <button className="refreshAllButton" onClick={refreshAll}>

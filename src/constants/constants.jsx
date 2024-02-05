@@ -5,7 +5,7 @@ const letters = {
       native: [
         {
           value: "`",
-          key: "223",
+          key: "192",
           shifted: false,
         },
         {
@@ -72,7 +72,7 @@ const letters = {
       shifted: [
         {
           value: "~",
-          key: "223",
+          key: "192",
           shifted: true,
         },
         {
@@ -202,7 +202,7 @@ const letters = {
         },
         {
           value: "\\",
-          key: "222",
+          key: "220",
           shifted: false,
         },
       ],
@@ -269,7 +269,7 @@ const letters = {
         },
         {
           value: "|",
-          key: "222",
+          key: "220",
           shifted: true,
         },
       ],
@@ -329,7 +329,7 @@ const letters = {
         },
         {
           value: "'",
-          key: "192",
+          key: "222",
           shifted: false,
         },
       ],
@@ -386,7 +386,7 @@ const letters = {
         },
         {
           value: '"',
-          key: "192",
+          key: "222",
           shifted: true,
         },
       ],
@@ -505,7 +505,7 @@ const letters = {
       native: [
         {
           value: "ё",
-          key: "223",
+          key: "192",
           shifted: false,
         },
         {
@@ -572,7 +572,7 @@ const letters = {
       shifted: [
         {
           value: "Ё",
-          key: "223",
+          key: "192",
           shifted: true,
         },
         {
@@ -702,7 +702,7 @@ const letters = {
         },
         {
           value: "\\",
-          key: "222",
+          key: "220",
           shifted: false,
         },
       ],
@@ -769,7 +769,7 @@ const letters = {
         },
         {
           value: "/",
-          key: "222",
+          key: "220",
           shifted: true,
         },
       ],
@@ -829,7 +829,7 @@ const letters = {
         },
         {
           value: "э",
-          key: "192",
+          key: "222",
           shifted: false,
         },
       ],
@@ -886,7 +886,7 @@ const letters = {
         },
         {
           value: "Э",
-          key: "192",
+          key: "222",
           shifted: true,
         },
       ],
@@ -1043,11 +1043,11 @@ const letters = {
     189: { line: "numbersLine", position: 11 },
     190: { line: "thirdLettersLine", position: 8 },
     191: { line: "thirdLettersLine", position: 9 },
-    192: { line: "secondLettersLine", position: 10 },
+    222: { line: "secondLettersLine", position: 10 },
     219: { line: "firstLettersLine", position: 10 },
     221: { line: "firstLettersLine", position: 11 },
-    222: { line: "firstLettersLine", position: 12 },
-    223: { line: "numbersLine", position: 0 },
+    220: { line: "firstLettersLine", position: 12 },
+    192: { line: "numbersLine", position: 0 },
   },
   usedKeyCodes: [
     "48",
@@ -1092,11 +1092,11 @@ const letters = {
     "189",
     "190",
     "191",
-    "192",
+    "222",
     "219",
     "221",
-    "222",
-    "223",
+    "220",
+    "192",
   ],
 };
 

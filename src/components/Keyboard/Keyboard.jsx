@@ -8,11 +8,10 @@ import { letters } from "../../constants/constants";
 function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
   const [buttons, setButtons] = useState({});
   const [ctx, setCtx] = useState(null);
-  const [defaultOutlineColor, setDefaultOutlineColor] =
-    useState("rgb(150, 200, 200)");
   const width = unit * 14.7;
   const height = unit * 4.2;
   const [arrow, setArrow] = useState({});
+  const defaultOutlineColor = "rgb(150, 200, 200)";
 
   useEffect(() => {
     const buttons = {};
@@ -56,6 +55,36 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
         gap: Math.fround(unit / 10),
       });
     }
+    buttons.leftShift = new Button({
+      x: Math.floor(0.6 * unit),
+      y: Math.floor((3.1) * unit),
+      height: unit,
+      width: unit * 1.8,
+      fontFamily: "monospace",
+      fontSize: Math.floor(unit / 4),
+      letter: 'Shift ',
+      shiftedLetter: '',
+      isLetterVisible: true,
+      background: "black",
+      color: "white",
+      outlineColor: defaultOutlineColor,
+      gap: Math.fround(unit / 10),
+    });
+    buttons.rightShift = new Button({
+      x: Math.floor((12.4) * unit),
+      y: Math.floor((3.1) * unit),
+      height: unit,
+      width: unit * 1.8,
+      fontFamily: "monospace",
+      fontSize: Math.floor(unit / 4),
+      letter: 'Shift ',
+      shiftedLetter: '',
+      isLetterVisible: true,
+      background: "black",
+      color: "white",
+      outlineColor: defaultOutlineColor,
+      gap: Math.fround(unit / 10),
+    });
     setButtons(buttons);
     setArrow(
       new Arrow({
@@ -69,7 +98,7 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
         endGap: Math.floor(unit / 4),
       })
     );
-  }, [defaultOutlineColor, language, unit]);
+  }, [ language, unit]);
 
   useEffect(() => {
     function draw(ctx) {
@@ -84,9 +113,11 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
     }
     const pressedButtonKey = pressedButton.key;
     const expectedButtonKey = expectedButton.key;
+    const pressedButtonShifted = pressedButton.shifted;
+    const expectedButtonShifted = expectedButton.shifted;
     Object.values(buttons).forEach((item) => {
       item.outlineColor = defaultOutlineColor;
-      item.isLetterVisible = false;
+      if (item.letter !== 'Shift ') item.isLetterVisible = false;
     });
     arrow.isArrowVisible = false;
     if (count) {
@@ -103,6 +134,20 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
       arrow.yEnd =
         buttons[expectedButtonKey].y + buttons[expectedButtonKey].height / 2;
       arrow.isArrowVisible = true;
+      if(expectedButtonShifted) {
+        if(pressedButtonShifted) {
+          buttons.leftShift.outlineColor = "#8ee177";
+          buttons.rightShift.outlineColor = "#8ee177";
+        } else {
+          buttons.leftShift.outlineColor = "#e1771a";
+          buttons.rightShift.outlineColor = "#e1771a";
+        }
+      } else {
+        if(pressedButtonShifted) {
+          buttons.leftShift.outlineColor = "#e1771a";
+          buttons.rightShift.outlineColor = "#e1771a";
+        }
+      }
     }
     if (ctx) draw(ctx);
   }, [
@@ -113,7 +158,6 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
     ctx,
     width,
     height,
-    defaultOutlineColor,
     arrow,
   ]);
 

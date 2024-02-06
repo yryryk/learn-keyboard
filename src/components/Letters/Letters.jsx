@@ -1,7 +1,7 @@
 import Loop from "../Loop/Loop"
 import { useState, useEffect } from "react";
 
-function Letters({lettersOrder, position, quantity, setIsEnd}) {
+function Letters({lettersOrder, position, quantity, setIsEnd, isStarted}) {
   const [elements, setElements] = useState([]);
   useEffect(() => {
     if (position && position > lettersOrder.length - 1) {
@@ -41,7 +41,7 @@ function Letters({lettersOrder, position, quantity, setIsEnd}) {
     }
   }, [lettersOrder, position, quantity, setIsEnd]);
   return (
-    <Loop elements={elements} position={position} quantity={quantity} />
+    <Loop elements={elements} position={position} quantity={quantity} isStarted={isStarted} />
   );
 }
 

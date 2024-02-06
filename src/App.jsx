@@ -22,6 +22,7 @@ function App() {
   const [buttons, setButtons] = useState({});
   const [distance, setDistance] = useState(0);
   const [start, setStart] = useState({});
+  const [isStarted, setIsStarted] = useState(false);
   const [getTimeInterval, setGetTimeInterval] = useState({});
   const [points, setPoints] = useState({
     velocity: 0,
@@ -61,53 +62,58 @@ function App() {
     function handleKeyPress(evt) {
       evt.preventDefault();
       const code = evt.keyCode;
-      if (!isEnd && letters.usedKeyCodes.includes(String(code))) {
-        const pressedButtonCodeMapping = letters.keyCodesToLettersMapping[code];
-        const pressedButtonIsShifted = evt.shiftKey ? "shifted" : "native";
-        const pressedButtonValue =
-          letters[language][pressedButtonCodeMapping.line][
-            pressedButtonIsShifted
-          ][pressedButtonCodeMapping.position].value;
-        const pressedButton = {
-          value: pressedButtonValue,
-          shifted: evt.shiftKey,
-          key: code,
-        };
-        const expectedButton = lettersOrder[position];
-        const stats = lettersStats[expectedButton.value];
-        const pressedButtonKey = pressedButton.key;
-        const expectedButtonKey = expectedButton.key;
-        const distanceX = Math.abs(buttons[pressedButtonKey].x - buttons[expectedButtonKey].x);
-        const distanceY = Math.abs(buttons[pressedButtonKey].y - buttons[expectedButtonKey].y);
-        setDistance(state => state + Math.round(Math.sqrt(distanceX**2 + distanceY**2)/unit));
-        setPressedButton(pressedButton);
-        setExpectedButton(expectedButton);
-        if (pressedButton.value === expectedButton.value) {
-          const time = Math.round(getTimeInterval.func());
-          const pointsTime = Math.round(time / 333) > 16 ? 15 : Math.round(time / 333) - 1;
-          const pointsDistance = distance > 15 ? 15 : distance;
-          const newPoints = {...points};
-          newPoints.velocity += 15 - pointsTime;
-          newPoints.accuracy += 15 - pointsDistance;
-          newPoints.all += 30 - pointsTime - pointsDistance;
-          setPoints({...newPoints});
-          stats.time += time;
-          stats.distance += distance;
-          setLettersStats((state) => ({
-            ...state,
-            [expectedButton.value]: stats,
-          }));
-          setPosition((state) => state + 1);
-          setDistance(0);
+      if (isStarted) {
+        if (!isEnd && letters.usedKeyCodes.includes(String(code))) {
+          const pressedButtonCodeMapping = letters.keyCodesToLettersMapping[code];
+          const pressedButtonIsShifted = evt.shiftKey ? "shifted" : "native";
+          const pressedButtonValue =
+            letters[language][pressedButtonCodeMapping.line][
+              pressedButtonIsShifted
+            ][pressedButtonCodeMapping.position].value;
+          const pressedButton = {
+            value: pressedButtonValue,
+            shifted: evt.shiftKey,
+            key: code,
+          };
+          const expectedButton = lettersOrder[position];
+          const stats = lettersStats[expectedButton.value];
+          const pressedButtonKey = pressedButton.key;
+          const expectedButtonKey = expectedButton.key;
+          const distanceX = Math.abs(buttons[pressedButtonKey].x - buttons[expectedButtonKey].x);
+          const distanceY = Math.abs(buttons[pressedButtonKey].y - buttons[expectedButtonKey].y);
+          setDistance(state => state + Math.round(Math.sqrt(distanceX**2 + distanceY**2)/unit));
+          setPressedButton(pressedButton);
+          setExpectedButton(expectedButton);
+          if (pressedButton.value === expectedButton.value) {
+            const time = Math.round(getTimeInterval.func());
+            const pointsTime = Math.round(time / 333) > 16 ? 15 : Math.round(time / 333) - 1;
+            const pointsDistance = distance > 15 ? 15 : distance;
+            const newPoints = {...points};
+            newPoints.velocity += 15 - pointsTime;
+            newPoints.accuracy += 15 - pointsDistance;
+            newPoints.all += 30 - pointsTime - pointsDistance;
+            setPoints({...newPoints});
+            stats.time += time;
+            stats.distance += distance;
+            setLettersStats((state) => ({
+              ...state,
+              [expectedButton.value]: stats,
+            }));
+            setPosition((state) => state + 1);
+            setDistance(0);
+          }
+          setCount((state) => state + 1);
         }
-        setCount((state) => state + 1);
+      } else {
+        setIsStarted(true);
+        start.func();
       }
     }
     window.addEventListener("keydown", handleKeyPress);
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, [buttons, distance, getTimeInterval, isEnd, language, lettersOrder, lettersStats, points, position, setLettersStats, unit]);
+  }, [buttons, distance, getTimeInterval, isEnd, isStarted, language, lettersOrder, lettersStats, points, position, setLettersStats, start, unit]);
 
   useEffect(() => {
     function handleResize() {
@@ -129,7 +135,7 @@ function App() {
       all: 0,
     });
     refreshLetters();
-    start.func();
+    setIsStarted(false);
   }
 
   return (
@@ -156,6 +162,7 @@ function App() {
             position={position}
             quantity={quantity}
             setIsEnd={setIsEnd}
+            isStarted={isStarted}
           />
           <Keyboard
             language={language}

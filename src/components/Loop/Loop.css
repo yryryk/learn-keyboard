@@ -16,6 +16,12 @@
   box-shadow: 0 0 50px 5px rgb(148, 148, 172), inset 0 0 10px black;
 }
 
+.loopStartedMessage {
+  font-weight: 600;
+  color: #3e6034;
+  text-shadow: 0 0 16px rgb(148, 148, 172);
+}
+
 .loopContainer {
   position: relative;
   height: var(--height);

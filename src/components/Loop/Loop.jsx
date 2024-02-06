@@ -2,7 +2,7 @@ import "./Loop.css";
 import { useState, useEffect } from "react";
 import LoopElement from "./LoopElement/LoopElement";
 
-function Loop({ elements, position, quantity }) {
+function Loop({ elements, position, quantity, isStarted }) {
   const [coefficient, setCoefficient] = useState(0);
   const [loopStyle, setLoopStyle] = useState({});
   const [angle, setAngle] = useState(0);
@@ -29,7 +29,7 @@ function Loop({ elements, position, quantity }) {
 
   return (
     <div className="loopWrapper" style={loopStyle}>
-      <div className="loopContainer" style={{ "--angle": "-" + angle + "deg" }}>
+      {isStarted ? (<div className="loopContainer" style={{ "--angle": "-" + angle + "deg" }}>
         <div className="loopOverlay loopOverlayLeft"></div>
         <div className="loopOverlay loopOverlayRight"></div>
         <div className="loopBorder"></div>
@@ -44,7 +44,9 @@ function Loop({ elements, position, quantity }) {
             />
           ))}
         </div>
-      </div>
+      </div>)
+      : <p className="loopStartedMessage">Нажмите любую клавишу<br/>на вашей клавиатуре<br/>чтобы начать тренировку</p>
+      }
     </div>
   );
 }

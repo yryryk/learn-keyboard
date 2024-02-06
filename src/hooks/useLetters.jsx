@@ -28,8 +28,9 @@ export default function useLetters({
     const objLettersStats = {};
     usedLetters.forEach((item) => {
       objLettersStats[item.value] = {
-        time: [],
-        button: [],
+        time: 0,
+        distance: 0,
+        button: item.value,
       };
     });
     setLettersStats(objLettersStats);

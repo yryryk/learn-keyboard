@@ -1,19 +1,22 @@
 .App {
   --unit: 50px;
-  position: relative;
   font-size: calc( var(--unit) / 4 );
   text-align: center;
   background-color: #282c34;
   min-height: 100vh;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .headline {
   color: rgb(150, 200, 200);
   margin-bottom: 50px;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
 }
 

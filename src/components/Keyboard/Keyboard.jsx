@@ -5,8 +5,7 @@ import Button from "./canvasElements/button";
 import Arrow from "./canvasElements/arrow";
 import { letters } from "../../constants/constants";
 
-function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
-  const [buttons, setButtons] = useState({});
+function Keyboard({ language, count, pressedButton, expectedButton, unit, buttons, setButtons }) {
   const [ctx, setCtx] = useState(null);
   const width = unit * 14.7;
   const height = unit * 4.2;
@@ -88,17 +87,17 @@ function Keyboard({ language, count, pressedButton, expectedButton, unit }) {
     setButtons(buttons);
     setArrow(
       new Arrow({
-        xStart: 30,
-        yStart: 30,
-        xEnd: 90,
-        yEnd: 90,
+        xStart: 0,
+        yStart: 0,
+        xEnd: 0,
+        yEnd: 0,
         isArrowVisible: false,
         background: "yellow",
         arrowThickness: Math.floor(unit / 5),
         endGap: Math.floor(unit / 4),
       })
     );
-  }, [ language, unit]);
+  }, [language, setButtons, unit]);
 
   useEffect(() => {
     function draw(ctx) {

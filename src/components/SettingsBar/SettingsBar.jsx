@@ -1,4 +1,4 @@
-import "./Bar.css";
+import "./SettingsBar.css";
 import Switcher from "../Switcher/Switcher";
 import Counter from "../Counter/Counter";
 
@@ -74,7 +74,7 @@ function Bar({
         <Switcher
           handleSwitch={handleShiftedSwitch}
           checked={shifted}
-          childrenleft={"Символы через шифт"}
+          childrenleft={"Символы на шифт"}
           childrenRight={""}
         />
         <Counter

@@ -18,8 +18,11 @@
 
 .loopStartedMessage {
   font-weight: 600;
+  line-height: 1.15;
+  max-width: calc(var(--unit) * 3.3);
   color: #3e6034;
   text-shadow: 0 0 16px rgb(148, 148, 172);
+  padding: 4px;
 }
 
 .loopContainer {

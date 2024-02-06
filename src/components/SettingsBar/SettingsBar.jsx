@@ -51,7 +51,7 @@ function Bar({
   }
 
   function handleMinusQuantity() {
-    if (quantity > 10) {
+    if (quantity > 5) {
       setQuantity((state) => state - 5);
     }
   }

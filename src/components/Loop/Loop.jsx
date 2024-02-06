@@ -19,8 +19,10 @@ function Loop({ elements, position, quantity, isStarted }) {
   }, [coefficient]);
 
   function changeAngle(setAngle, quantity, position) {
+    console.log(1);
     if (quantity > 0) {
-      setAngle((360 * (position + 3)) / quantity);
+      setAngle((360 * (position + quantity/5 - 1)) / quantity);
+      console.log((position + quantity/5 - 1), quantity, (position + quantity/5 - 1) / quantity, 53/35, 52/30);
     }
   }
   useEffect(() => {

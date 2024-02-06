@@ -123,6 +123,11 @@ function App() {
     setPosition(0);
     setCount(0);
     setIsEnd(false);
+    setPoints ({
+      velocity: 0,
+      accuracy: 0,
+      all: 0,
+    });
     refreshLetters();
     start.func();
   }

@@ -5,6 +5,7 @@ function StatisticsPanel({
   position,
   points,
   lettersStats,
+  count,
 }) {
   const length = lettersOrder.length;
   const lettersStatsValues = Object.values(lettersStats);
@@ -39,18 +40,18 @@ function StatisticsPanel({
       <div className="infoTitle">
         Заработано очков:<br/><br/>
         Скорость:
-        <p className="infoValue">{points.velocity}</p>
+        <p className="infoValue">{points.velocity + ' ' + '(' + Math.round(points.velocity * 1000 / ((position || 1) * 15)) / 10 + '%)'}</p>
         (Максимум: {length * 15})<br/><br/>
         Точность:
-        <p className="infoValue">{points.accuracy}</p>
+        <p className="infoValue">{points.accuracy + ' ' + '(' + Math.round(points.accuracy * 1000 / ((position || 1) * 15)) / 10 + '%)'}</p>
         (Максимум: {length * 15})<br/><br/>
         Всего:
-        <p className="infoValue">{points.all}</p>
+        <p className="infoValue">{points.all + ' ' + '(' + Math.round(points.all * 1000 / ((position || 1) * 30)) / 10 + '%)'}</p>
         (Максимум: {length * 30})
       </div>
       <div className="infoTitle">
         Знаков в минуту:
-        <p className="infoValue">{Math.round(position * 60000 / allTime)}</p>
+        <p className="infoValue">{Math.round(position * 60000 / allTime)+ ' / ' + Math.round(count * 60000 / allTime)}</p>
       </div>
       <div className="infoTitle">
         Худшая скорость:

@@ -5,7 +5,8 @@ import useLetters from "./hooks/useLetters";
 import { letters } from "./constants/constants";
 import Keyboard from "./components/Keyboard/Keyboard";
 import Bar from "./components/SettingsBar/SettingsBar";
-import StatisticsPanel from './components/StatisticsPanel/StatisticsPanel'
+import StatisticsPanel from './components/StatisticsPanel/StatisticsPanel';
+import useTimeInterval from './hooks/useTimeInterval';
 
 function App() {
   const [unit, setUnit] = useState(window.innerWidth / 24);
@@ -21,14 +22,13 @@ function App() {
   const [lettersRange, setLettersRange] = useState(1);
   const [buttons, setButtons] = useState({});
   const [distance, setDistance] = useState(0);
-  const [start, setStart] = useState({});
   const [isStarted, setIsStarted] = useState(false);
-  const [getTimeInterval, setGetTimeInterval] = useState({});
   const [points, setPoints] = useState({
     velocity: 0,
     accuracy: 0,
     all: 0,
   });
+  const [start, getTimeInterval] = useTimeInterval();
   const [lettersOrder, lettersStats, setLettersStats, refreshLetters] =
     useLetters({
       letters: letters,
@@ -37,26 +37,6 @@ function App() {
       isNumbers: numbers,
       isShifted: shifted,
     });
-
-  useEffect(() => {
-    function measureTimeInterval() {
-      let prevTime = performance.now();
-      function start() {
-        prevTime = performance.now();
-      }
-      function getTimeInterval() {
-        const time = performance.now();
-        const timeInterval = time - prevTime;
-        prevTime = time;
-        return timeInterval;
-      }
-      return [start, getTimeInterval];
-    }
-    const [start, getTimeInterval] = measureTimeInterval();
-
-    setStart({func: start});
-    setGetTimeInterval({func: getTimeInterval});
-  }, []);
 
   useEffect(() => {
     function handleKeyPress(evt) {
@@ -177,6 +157,7 @@ function App() {
         <StatisticsPanel
           lettersOrder={lettersOrder}
           position={position}
+          count={count}
           points={points}
           lettersStats={lettersStats}
         />
